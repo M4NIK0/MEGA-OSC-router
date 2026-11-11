@@ -18,6 +18,8 @@ CPM dependency supplies Boost.Log and its required Boost libraries. The first
 configure/build downloads and compiles the dependencies, so it can take
 significantly longer than subsequent builds.
 
+The application starts a basic Qt Widgets window titled **MEGA OSC router**.
+
 CPM.cmake is downloaded automatically into the build directory during the
 first configure. It is kept separate from Qt because compiling Qt from source
 through CPM is unnecessarily expensive; Qt is consumed through CMake's

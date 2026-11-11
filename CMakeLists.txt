@@ -44,7 +44,7 @@ CPMAddPackage(
         "BOOST_INCLUDE_LIBRARIES log"
 )
 
-find_package(Qt6 6.5 CONFIG REQUIRED COMPONENTS Core)
+find_package(Qt6 6.5 CONFIG REQUIRED COMPONENTS Widgets)
 
 add_executable(mega-osc-router
     src/main.cpp
@@ -52,7 +52,7 @@ add_executable(mega-osc-router
         src/plugins/IPlugin.hpp
 )
 
-target_link_libraries(mega-osc-router PRIVATE Qt6::Core Boost::log)
+target_link_libraries(mega-osc-router PRIVATE Qt6::Widgets Boost::log)
 
 set_target_properties(mega-osc-router PROPERTIES
     OUTPUT_NAME "mega-osc-router"
