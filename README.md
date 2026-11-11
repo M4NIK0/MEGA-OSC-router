@@ -1,5 +1,7 @@
 # MEGA OSC router
 
+This project aims to give a fully supported OSC router including modules to include and manage internally OSC integrations (for VRChat or others) through plugins loaded and started at any point during runtime.
+
 ## Configure and build
 
 Qt 6.5 or newer is required. Qt can be installed system-wide, or supplied by

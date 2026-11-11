@@ -36,12 +36,15 @@ include("${CPM_DOWNLOAD_LOCATION}")
 # Building Qt itself through CPM is prohibitively expensive for a normal
 # application configure; vcpkg or a system Qt installation can provide it.
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core)
+find_package(Boost.Log REQUIRED)
 
 add_executable(mega-osc-router
     src/main.cpp
+        src/plugins/IPlugin.cpp
+        src/plugins/IPlugin.hpp
 )
 
-target_link_libraries(mega-osc-router PRIVATE Qt6::Core)
+target_link_libraries(mega-osc-router PRIVATE Qt6::Core Boost::log)
 
 set_target_properties(mega-osc-router PROPERTIES
     OUTPUT_NAME "mega-osc-router"
