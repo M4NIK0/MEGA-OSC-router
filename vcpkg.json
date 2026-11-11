@@ -1,0 +1,8 @@
+{
+  "name": "mega-osc-router",
+  "version-string": "0.1.0",
+  "description": "MEGA OSC router",
+  "dependencies": [
+    "qtbase"
+  ]
+}
