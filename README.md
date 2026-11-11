@@ -4,13 +4,19 @@ This project aims to give a fully supported OSC router including modules to incl
 
 ## Configure and build
 
-Qt 6.5 or newer is required. Qt can be installed system-wide, or supplied by
-vcpkg using the included manifest:
+Boost.Log is downloaded and built automatically by CPM. Qt 6.5 or newer must
+be installed separately because Qt does not support being embedded as a normal
+CPM subdirectory:
 
 ```sh
-cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake"
+cmake -S . -B build
 cmake --build build
 ```
+
+The application uses Boost.Log's `BOOST_LOG_TRIVIAL` logger. The `boost-log`
+CPM dependency supplies Boost.Log and its required Boost libraries. The first
+configure/build downloads and compiles the dependencies, so it can take
+significantly longer than subsequent builds.
 
 CPM.cmake is downloaded automatically into the build directory during the
 first configure. It is kept separate from Qt because compiling Qt from source
@@ -31,3 +37,6 @@ cpack
 
 The default generators produce `.tar.gz` and `.zip` packages. Select a
 specific generator with `cpack -G TGZ` or `cpack -G ZIP`.
+
+The `vcpkg.json` manifest is retained for environments that already standardize
+on vcpkg, but the normal CMake workflow does not use it.

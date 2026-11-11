@@ -32,11 +32,19 @@ if(NOT EXISTS "${CPM_DOWNLOAD_LOCATION}")
 endif()
 include("${CPM_DOWNLOAD_LOCATION}")
 
-# Qt is intentionally consumed as an installed/toolchain-provided package.
-# Building Qt itself through CPM is prohibitively expensive for a normal
-# application configure; vcpkg or a system Qt installation can provide it.
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core)
-find_package(Boost.Log REQUIRED)
+CPMAddPackage(
+    NAME Boost
+    VERSION 1.86.0
+    GITHUB_REPOSITORY boostorg/boost
+    GIT_TAG boost-1.86.0
+    GIT_SHALLOW YES
+    GIT_SUBMODULES_RECURSE YES
+    OPTIONS
+        "BOOST_ENABLE_CMAKE ON"
+        "BOOST_INCLUDE_LIBRARIES log"
+)
+
+find_package(Qt6 6.5 CONFIG REQUIRED COMPONENTS Core)
 
 add_executable(mega-osc-router
     src/main.cpp
