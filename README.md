@@ -4,7 +4,7 @@ This project aims to give a fully supported OSC router including modules to incl
 
 ## Configure and build
 
-Boost.Log is downloaded and built automatically by CPM. Qt 6.5 or newer must
+Boost.Log and the header-only OSCCPP library are downloaded automatically by CPM. Qt 6.5 or newer must
 be installed separately because Qt does not support being embedded as a normal
 CPM subdirectory:
 

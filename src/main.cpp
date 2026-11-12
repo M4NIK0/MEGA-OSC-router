@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QLabel>
 #include <QWidget>
+#include <oscpp/client.hpp>
 
 #include <boost/log/trivial.hpp>
 

@@ -44,15 +44,40 @@ CPMAddPackage(
         "BOOST_INCLUDE_LIBRARIES log"
 )
 
+# Add enet package
+CPMAddPackage(
+        NAME enet
+        GIT_REPOSITORY https://github.com/lsalzman/enet.git
+        GIT_TAG "v1.3.18"
+)
+
+CPMAddPackage(
+    NAME oscpp
+    GITHUB_REPOSITORY kaoskorobase/oscpp
+    GIT_TAG 1.0.0
+)
+
 find_package(Qt6 6.5 CONFIG REQUIRED COMPONENTS Widgets)
 
 add_executable(mega-osc-router
     src/main.cpp
         src/plugins/IPlugin.cpp
         src/plugins/IPlugin.hpp
+        src/OSC/Server.cpp
+        src/OSC/Server.hpp
+        src/Processes/Thread.cpp
+        src/Processes/Thread.hpp
+        src/Networking/Packets.cpp
+        src/Networking/Packets.hpp
 )
 
-target_link_libraries(mega-osc-router PRIVATE Qt6::Widgets Boost::log)
+target_link_libraries(mega-osc-router PRIVATE Qt6::Widgets Boost::log oscpp::oscpp)
+
+if(WIN32)
+    target_link_libraries(mega-osc-router PRIVATE ws2_32)
+    target_link_libraries(mega-osc-router PRIVATE winmm)
+endif()
+target_link_libraries(mega-osc-router PUBLIC enet)
 
 set_target_properties(mega-osc-router PROPERTIES
     OUTPUT_NAME "mega-osc-router"
