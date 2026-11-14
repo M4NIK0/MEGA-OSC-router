@@ -69,6 +69,8 @@ add_executable(mega-osc-router
         src/Processes/Thread.hpp
         src/Networking/Packets.cpp
         src/Networking/Packets.hpp
+        src/Processes/ICallback.cpp
+        src/Processes/ICallback.hpp
 )
 
 target_link_libraries(mega-osc-router PRIVATE Qt6::Widgets Boost::log oscpp::oscpp)
